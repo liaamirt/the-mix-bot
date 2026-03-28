@@ -1,5 +1,8 @@
+venv/
 .venv/
-.idea/
+env/
+ENV/
+
 __pycache__/
 *.pyc
 .env
@@ -7,3 +10,11 @@ themix.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+.vscode/
+.idea/
+.DS_Store
+
+pycache/
+*.py[cod]
+*$py.class
