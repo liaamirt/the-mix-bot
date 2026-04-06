@@ -27,7 +27,7 @@ jobs:
 
       - name: Run Ruff Linter
         # Формат 'github' дозволяє відображати помилки безпосередньо у коді PR як коментарі
-        run: ruff check --output-format=.github
+        run: ruff check --output-format=github .
 
       - name: Run Ruff Formatter Check
         # Режим '--check' завершується помилкою, якщо код не відформатовано
