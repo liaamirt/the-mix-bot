@@ -1,0 +1,35 @@
+[tool.ruff]
+# Базові налаштування
+line-length = 88
+indent-width = 4
+target-version = "py39"
+
+# Ігнорування директорій, які містять автозгенерований або кешований код
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "venv",
+    "env",
+    "__pycache__",
+    "themix.db",
+]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E501"] # Ignore line length errors
+fixable = ["ALL"]
+
+# У тестових файлах та файлі seed_db дозволено використання assert та жорстких паролів/ідентифікаторів
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"tests/*" = ["S101"]
+"seed_db.py" = ["T201"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
