@@ -9,18 +9,19 @@ BOOKINGS_DATA = [
     (1, 111111, "25-12-2025", "18:00", 2, "+380501234567", "Біля вікна"),
     (2, 222222, "01-01-2026", "21:00", 20, "+380999999999", "Ювілей"),
     (3, 333333, "08-03-2026", "11:00", 1, "+380630000000", "-"),
-    (4, 444444, "14-02-2026", "19:30", 2, "+380971112233", "Love is in the air!")
+    (4, 444444, "14-02-2026", "19:30", 2, "+380971112233", "Love is in the air!"),
 ]
 
 FEEDBACKS_DATA = [
     (1, 111111, 5, "Все супер, кухня смачна!"),
     (2, 222222, 1, "Жахливо. Чекали 40 хвилин."),
     (3, 333333, 3, "Нормально."),
-    (4, 444444, 5, "Детальний відгук...")
+    (4, 444444, 5, "Детальний відгук..."),
 ]
 
 
 # -----------------------------------------------
+
 
 def seed_database():
     if os.path.exists(DB_NAME):
@@ -57,12 +58,12 @@ def seed_database():
     # Важливо: ми вставляємо ID явно, щоб тести знали, який ID очікувати
     cursor.executemany(
         "INSERT INTO bookings (id, user_id, date, time, guests, phone, wishes) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        BOOKINGS_DATA
+        BOOKINGS_DATA,
     )
 
     cursor.executemany(
         "INSERT INTO feedbacks (id, user_id, rating, comment) VALUES (?, ?, ?, ?)",
-        FEEDBACKS_DATA
+        FEEDBACKS_DATA,
     )
 
     conn.commit()

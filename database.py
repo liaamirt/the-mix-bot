@@ -24,24 +24,34 @@ CREATE TABLE IF NOT EXISTS bookings (
 );
 """
 
+
 async def init_db():
     async with aiosqlite.connect(DB_PATH) as db:
         await db.executescript(CREATE_TABLES_SQL)
         await db.commit()
 
+
 async def add_feedback(user_id, username, rating, comment):
     async with aiosqlite.connect(DB_PATH) as db:
         await db.execute(
             "INSERT INTO feedbacks (user_id, username, rating, comment) VALUES (?,?,?,?)",
-            (user_id, username, rating, comment)
+            (user_id, username, rating, comment),
         )
         await db.commit()
+
 
 async def add_booking(user_id, username, data: dict):
     async with aiosqlite.connect(DB_PATH) as db:
         await db.execute(
             "INSERT INTO bookings (user_id, username, date, time, guests, wishes, phone) VALUES (?,?,?,?,?,?,?)",
-            (user_id, username, data.get("date"), data.get("time"), 
-             int(data.get("guests", 1)), data.get("wishes", ""), data.get("phone"))
+            (
+                user_id,
+                username,
+                data.get("date"),
+                data.get("time"),
+                int(data.get("guests", 1)),
+                data.get("wishes", ""),
+                data.get("phone"),
+            ),
         )
         await db.commit()

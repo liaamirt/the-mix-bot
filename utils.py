@@ -3,6 +3,7 @@ from aiogram import Bot
 import logging
 from config import ADMIN_CHAT_ID
 
+
 @dataclass
 class Texts:
     welcome: str = (
@@ -17,7 +18,9 @@ class Texts:
         "<b>Завжди чекаємо на Вас у TheMix</b> 🫶"
     )
 
+
 TEXTS = Texts()
+
 
 async def notify_admin(bot: Bot, text: str):
     if ADMIN_CHAT_ID:

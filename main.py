@@ -9,6 +9,7 @@ from config import BOT_TOKEN, DB_PATH
 from database import init_db
 from handlers import basic, feedback, booking
 
+
 async def main():
     await init_db()
     logging.info("DB initialized at %s", DB_PATH)
@@ -22,6 +23,7 @@ async def main():
 
     logging.info("Bot started!")
     await dp.start_polling(bot)
+
 
 if __name__ == "__main__":
     try:

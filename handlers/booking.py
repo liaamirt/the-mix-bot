@@ -10,24 +10,29 @@ from utils import notify_admin
 
 router = Router()
 
+
 @router.message(F.text == "🍽️ Забронювати столик")
 async def booking_start(message: Message, state: FSMContext):
     await state.clear()
     await state.set_state(BookingSG.waiting_date)
     await message.answer("📅 Вкажіть дату у форматі ДД-ММ-РРРР (наприклад, 06-10-2025)")
 
+
 @router.message(BookingSG.waiting_date, F.text.regexp(r"^\d{2}-\d{2}-\d{4}$"))
 async def booking_date_ok(message: Message, state: FSMContext):
     try:
         booking_date = datetime.strptime(message.text, "%d-%m-%Y")
         if booking_date < datetime.now():
-            await message.answer("Неможливо забронювати столик на минулий день. Оберіть майбутню дату.")
+            await message.answer(
+                "Неможливо забронювати столик на минулий день. Оберіть майбутню дату."
+            )
             return
         await state.update_data(date=message.text)
         await state.set_state(BookingSG.waiting_time)
         await message.answer("🕓 Вкажіть час у форматі ГГ:ХХ (наприклад, 19:30)")
     except ValueError:
         await message.answer("Формат дати невірний.")
+
 
 @router.message(BookingSG.waiting_time, F.text.regexp(r"^\d{2}:\d{2}$"))
 async def booking_time_ok(message: Message, state: FSMContext):
@@ -39,17 +44,22 @@ async def booking_time_ok(message: Message, state: FSMContext):
     await state.set_state(BookingSG.waiting_guests)
     await message.answer("👥 Скільки гостей? (цифрою)")
 
+
 @router.message(BookingSG.waiting_guests, F.text.regexp(r"^\d{1,2}$"))
 async def booking_guests_ok(message: Message, state: FSMContext):
     await state.update_data(guests=int(message.text))
     await state.set_state(BookingSG.waiting_wishes)
-    await message.answer("🪑 Побажання (місце/подія/дитяче крісло). Якщо немає — напишіть '-' ")
+    await message.answer(
+        "🪑 Побажання (місце/подія/дитяче крісло). Якщо немає — напишіть '-' "
+    )
+
 
 @router.message(BookingSG.waiting_wishes)
 async def booking_wishes(message: Message, state: FSMContext):
     await state.update_data(wishes=message.text)
     await state.set_state(BookingSG.waiting_phone)
     await message.answer("📞 Залиште номер телефону (формат +380XXXXXXXXX)")
+
 
 @router.message(BookingSG.waiting_phone, F.text.regexp(r"^\+?\d{10,15}$"))
 async def booking_phone_ok(message: Message, state: FSMContext):
@@ -74,9 +84,11 @@ async def booking_phone_ok(message: Message, state: FSMContext):
     await notify_admin(message.bot, admin_text)
     await state.clear()
 
+
 @router.message(BookingSG.waiting_guests)
 async def booking_guests_fail(message: Message):
     await message.answer("Вкажіть число, наприклад 4")
+
 
 @router.message(BookingSG.waiting_time)
 async def booking_time_fail(message: Message):

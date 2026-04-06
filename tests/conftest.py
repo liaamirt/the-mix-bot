@@ -4,7 +4,7 @@ import sys
 import os
 
 # Додавання шляху до кореневої папки для доступу до seed_db.py
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from seed_db import BOOKINGS_DATA, FEEDBACKS_DATA
 
 
@@ -31,11 +31,11 @@ async def db_connection():
         # 2. Наповнення початковими даними (Seeding)
         await db.executemany(
             "INSERT INTO bookings (id, user_id, date, time, guests, phone, wishes) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            BOOKINGS_DATA
+            BOOKINGS_DATA,
         )
         await db.executemany(
             "INSERT INTO feedbacks (id, user_id, rating, comment) VALUES (?, ?, ?, ?)",
-            FEEDBACKS_DATA
+            FEEDBACKS_DATA,
         )
         await db.commit()
 
