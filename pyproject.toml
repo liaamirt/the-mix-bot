@@ -33,3 +33,20 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.9"
+# Увімкнення суворого режиму для максимальної надійності
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+# Дозволити ігнорування сторонніх бібліотек, які не мають stub-файлів (файлів з типами)
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# Зниження строгості для тестів, де гнучкість важливіша за суворі типи
+module = "tests.*"
+disallow_untyped_defs = false

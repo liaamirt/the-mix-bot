@@ -5,3 +5,6 @@ pytest
 pytest-asyncio
 coverage
 bandit
+ruff
+pre-commit
+mypy
