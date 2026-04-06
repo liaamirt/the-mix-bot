@@ -8,3 +8,4 @@ bandit
 ruff
 pre-commit
 mypy
+make
