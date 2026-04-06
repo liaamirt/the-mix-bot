@@ -15,6 +15,7 @@ exclude = [
     "env",
     "__pycache__",
     "themix.db",
+    "docs"
 ]
 
 [tool.ruff.lint]

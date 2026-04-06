@@ -9,3 +9,5 @@ ruff
 pre-commit
 mypy
 make
+sphinx
+sphinx-rtd-theme
