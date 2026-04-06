@@ -7,7 +7,7 @@
    :maxdepth: 2
    :caption: Навігація:
 
-    architecture
+   architecture
 
 Головні компоненти
 ------------------

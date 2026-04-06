@@ -19,7 +19,8 @@
       <script src="_static/translations.js?v=0958edf7"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Індекс" href="genindex.html" />
-    <link rel="search" title="Пошук" href="search.html" /> 
+    <link rel="search" title="Пошук" href="search.html" />
+    <link rel="next" title="Архітектура проєкту" href="architecture.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,81 +42,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Документація проєкту The Mix Bot</a><ul>
-<li><a class="reference internal" href="#module-main">Головні компоненти</a><ul>
-<li><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
-<li><a class="reference internal" href="#database.CREATE_TABLES_SQL"><code class="docutils literal notranslate"><span class="pre">CREATE_TABLES_SQL</span></code></a></li>
-<li><a class="reference internal" href="#database.add_booking"><code class="docutils literal notranslate"><span class="pre">add_booking()</span></code></a></li>
-<li><a class="reference internal" href="#database.add_feedback"><code class="docutils literal notranslate"><span class="pre">add_feedback()</span></code></a></li>
-<li><a class="reference internal" href="#database.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
-<li><a class="reference internal" href="#config.ADMIN_CHAT_ID"><code class="docutils literal notranslate"><span class="pre">ADMIN_CHAT_ID</span></code></a></li>
-<li><a class="reference internal" href="#config.BOT_TOKEN"><code class="docutils literal notranslate"><span class="pre">BOT_TOKEN</span></code></a></li>
-<li><a class="reference internal" href="#config.DB_PATH"><code class="docutils literal notranslate"><span class="pre">DB_PATH</span></code></a></li>
-<li><a class="reference internal" href="#seed_db.BOOKINGS_DATA"><code class="docutils literal notranslate"><span class="pre">BOOKINGS_DATA</span></code></a></li>
-<li><a class="reference internal" href="#seed_db.DB_NAME"><code class="docutils literal notranslate"><span class="pre">DB_NAME</span></code></a></li>
-<li><a class="reference internal" href="#seed_db.FEEDBACKS_DATA"><code class="docutils literal notranslate"><span class="pre">FEEDBACKS_DATA</span></code></a></li>
-<li><a class="reference internal" href="#seed_db.seed_database"><code class="docutils literal notranslate"><span class="pre">seed_database()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Навігація:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архітектура проєкту</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#module-utils">Утиліти та Інтерфейси</a><ul>
-<li><a class="reference internal" href="#utils.Texts"><code class="docutils literal notranslate"><span class="pre">Texts</span></code></a><ul>
-<li><a class="reference internal" href="#utils.Texts.welcome"><code class="docutils literal notranslate"><span class="pre">Texts.welcome</span></code></a></li>
-<li><a class="reference internal" href="#utils.Texts.contacts"><code class="docutils literal notranslate"><span class="pre">Texts.contacts</span></code></a></li>
-<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Texts.contacts</span></code></a></li>
-<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Texts.welcome</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#utils.notify_admin"><code class="docutils literal notranslate"><span class="pre">notify_admin()</span></code></a></li>
-<li><a class="reference internal" href="#states.BookingSG"><code class="docutils literal notranslate"><span class="pre">BookingSG</span></code></a><ul>
-<li><a class="reference internal" href="#states.BookingSG.waiting_date"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_date</span></code></a></li>
-<li><a class="reference internal" href="#states.BookingSG.waiting_time"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_time</span></code></a></li>
-<li><a class="reference internal" href="#states.BookingSG.waiting_guests"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_guests</span></code></a></li>
-<li><a class="reference internal" href="#states.BookingSG.waiting_wishes"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_wishes</span></code></a></li>
-<li><a class="reference internal" href="#states.BookingSG.waiting_phone"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_phone</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_date</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_guests</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_phone</span></code></a></li>
-<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_time</span></code></a></li>
-<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_wishes</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#states.FeedbackSG"><code class="docutils literal notranslate"><span class="pre">FeedbackSG</span></code></a><ul>
-<li><a class="reference internal" href="#states.FeedbackSG.waiting_rating"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_rating</span></code></a></li>
-<li><a class="reference internal" href="#states.FeedbackSG.waiting_comment"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_comment</span></code></a></li>
-<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_comment</span></code></a></li>
-<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_rating</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#keyboards.main_kb"><code class="docutils literal notranslate"><span class="pre">main_kb()</span></code></a></li>
-<li><a class="reference internal" href="#keyboards.yesno_kb"><code class="docutils literal notranslate"><span class="pre">yesno_kb()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-handlers.basic">Обробники подій (Handlers)</a><ul>
-<li><a class="reference internal" href="#handlers.basic.contacts"><code class="docutils literal notranslate"><span class="pre">contacts()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.basic.fallback"><code class="docutils literal notranslate"><span class="pre">fallback()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.basic.on_start"><code class="docutils literal notranslate"><span class="pre">on_start()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.basic.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_date_ok"><code class="docutils literal notranslate"><span class="pre">booking_date_ok()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_guests_fail"><code class="docutils literal notranslate"><span class="pre">booking_guests_fail()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_guests_ok"><code class="docutils literal notranslate"><span class="pre">booking_guests_ok()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_phone_ok"><code class="docutils literal notranslate"><span class="pre">booking_phone_ok()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_start"><code class="docutils literal notranslate"><span class="pre">booking_start()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_time_fail"><code class="docutils literal notranslate"><span class="pre">booking_time_fail()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_time_ok"><code class="docutils literal notranslate"><span class="pre">booking_time_ok()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.booking_wishes"><code class="docutils literal notranslate"><span class="pre">booking_wishes()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.booking.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
-<li><a class="reference internal" href="#handlers.feedback.feedback_comment_received"><code class="docutils literal notranslate"><span class="pre">feedback_comment_received()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.feedback.feedback_entry"><code class="docutils literal notranslate"><span class="pre">feedback_entry()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.feedback.feedback_rating_received"><code class="docutils literal notranslate"><span class="pre">feedback_rating_received()</span></code></a></li>
-<li><a class="reference internal" href="#handlers.feedback.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -144,6 +75,14 @@
 <h1>Документація проєкту The Mix Bot<a class="headerlink" href="#the-mix-bot" title="Link to this heading"></a></h1>
 <p>Тут зібрана вся технічна документація для Telegram-бота ресторану «The Mix», згенерована автоматично з docstrings у вихідному коді.</p>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Навігація:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Архітектура проєкту</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id2">Децентралізована маршрутизація</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#id3">Асинхронна робота з БД</a></li>
+</ul>
+</li>
+</ul>
 </div>
 <section id="module-main">
 <span id="id1"></span><h2>Головні компоненти<a class="headerlink" href="#module-main" title="Link to this heading"></a></h2>
@@ -618,7 +557,7 @@
 
 <dl class="py data">
 <dt class="sig sig-object py" id="handlers.basic.router">
-<span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd9bdfdd0'&gt;</span></span><a class="headerlink" href="#handlers.basic.router" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x130c500bf80'&gt;</span></span><a class="headerlink" href="#handlers.basic.router" title="Link to this definition"></a></dt>
 <dd><p>Екземпляр роутера для маршрутизації базових подій бота.</p>
 </dd></dl>
 
@@ -783,7 +722,7 @@
 
 <dl class="py data">
 <dt class="sig sig-object py" id="handlers.booking.router">
-<span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd9c0aed0'&gt;</span></span><a class="headerlink" href="#handlers.booking.router" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x130c504f170'&gt;</span></span><a class="headerlink" href="#handlers.booking.router" title="Link to this definition"></a></dt>
 <dd><p>Екземпляр роутера для маршрутизації подій процесу бронювання.</p>
 </dd></dl>
 
@@ -857,7 +796,7 @@
 
 <dl class="py data">
 <dt class="sig sig-object py" id="handlers.feedback.router">
-<span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd8576480'&gt;</span></span><a class="headerlink" href="#handlers.feedback.router" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x130c4dac4d0'&gt;</span></span><a class="headerlink" href="#handlers.feedback.router" title="Link to this definition"></a></dt>
 <dd><p>Екземпляр роутера для маршрутизації подій, пов’язаних із відгуками.</p>
 </dd></dl>
 
@@ -867,7 +806,9 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Архітектура проєкту" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
