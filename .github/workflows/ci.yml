@@ -31,10 +31,10 @@ jobs:
 
       - name: Run Ruff Formatter Check
         # Режим '--check' завершується помилкою, якщо код не відформатовано
-        run: ruff format --check.
+        run: ruff format --check .
 
       - name: Run Static Type Checker (Mypy)
-        run: mypy.
+        run: mypy .
 
   unit-tests:
     name: Run Pytest
