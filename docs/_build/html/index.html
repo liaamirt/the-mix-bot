@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="uk-UA" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Документація проєкту The Mix Bot &mdash; the-mix-bot 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=345013ab"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=0958edf7"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Індекс" href="genindex.html" />
+    <link rel="search" title="Пошук" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            the-mix-bot
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Документація проєкту The Mix Bot</a><ul>
+<li><a class="reference internal" href="#module-main">Головні компоненти</a><ul>
+<li><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#database.CREATE_TABLES_SQL"><code class="docutils literal notranslate"><span class="pre">CREATE_TABLES_SQL</span></code></a></li>
+<li><a class="reference internal" href="#database.add_booking"><code class="docutils literal notranslate"><span class="pre">add_booking()</span></code></a></li>
+<li><a class="reference internal" href="#database.add_feedback"><code class="docutils literal notranslate"><span class="pre">add_feedback()</span></code></a></li>
+<li><a class="reference internal" href="#database.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
+<li><a class="reference internal" href="#config.ADMIN_CHAT_ID"><code class="docutils literal notranslate"><span class="pre">ADMIN_CHAT_ID</span></code></a></li>
+<li><a class="reference internal" href="#config.BOT_TOKEN"><code class="docutils literal notranslate"><span class="pre">BOT_TOKEN</span></code></a></li>
+<li><a class="reference internal" href="#config.DB_PATH"><code class="docutils literal notranslate"><span class="pre">DB_PATH</span></code></a></li>
+<li><a class="reference internal" href="#seed_db.BOOKINGS_DATA"><code class="docutils literal notranslate"><span class="pre">BOOKINGS_DATA</span></code></a></li>
+<li><a class="reference internal" href="#seed_db.DB_NAME"><code class="docutils literal notranslate"><span class="pre">DB_NAME</span></code></a></li>
+<li><a class="reference internal" href="#seed_db.FEEDBACKS_DATA"><code class="docutils literal notranslate"><span class="pre">FEEDBACKS_DATA</span></code></a></li>
+<li><a class="reference internal" href="#seed_db.seed_database"><code class="docutils literal notranslate"><span class="pre">seed_database()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-utils">Утиліти та Інтерфейси</a><ul>
+<li><a class="reference internal" href="#utils.Texts"><code class="docutils literal notranslate"><span class="pre">Texts</span></code></a><ul>
+<li><a class="reference internal" href="#utils.Texts.welcome"><code class="docutils literal notranslate"><span class="pre">Texts.welcome</span></code></a></li>
+<li><a class="reference internal" href="#utils.Texts.contacts"><code class="docutils literal notranslate"><span class="pre">Texts.contacts</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Texts.contacts</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Texts.welcome</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utils.notify_admin"><code class="docutils literal notranslate"><span class="pre">notify_admin()</span></code></a></li>
+<li><a class="reference internal" href="#states.BookingSG"><code class="docutils literal notranslate"><span class="pre">BookingSG</span></code></a><ul>
+<li><a class="reference internal" href="#states.BookingSG.waiting_date"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_date</span></code></a></li>
+<li><a class="reference internal" href="#states.BookingSG.waiting_time"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_time</span></code></a></li>
+<li><a class="reference internal" href="#states.BookingSG.waiting_guests"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_guests</span></code></a></li>
+<li><a class="reference internal" href="#states.BookingSG.waiting_wishes"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_wishes</span></code></a></li>
+<li><a class="reference internal" href="#states.BookingSG.waiting_phone"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_phone</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_date</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_guests</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_phone</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_time</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">BookingSG.waiting_wishes</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#states.FeedbackSG"><code class="docutils literal notranslate"><span class="pre">FeedbackSG</span></code></a><ul>
+<li><a class="reference internal" href="#states.FeedbackSG.waiting_rating"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_rating</span></code></a></li>
+<li><a class="reference internal" href="#states.FeedbackSG.waiting_comment"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_comment</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_comment</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">FeedbackSG.waiting_rating</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#keyboards.main_kb"><code class="docutils literal notranslate"><span class="pre">main_kb()</span></code></a></li>
+<li><a class="reference internal" href="#keyboards.yesno_kb"><code class="docutils literal notranslate"><span class="pre">yesno_kb()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-handlers.basic">Обробники подій (Handlers)</a><ul>
+<li><a class="reference internal" href="#handlers.basic.contacts"><code class="docutils literal notranslate"><span class="pre">contacts()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.basic.fallback"><code class="docutils literal notranslate"><span class="pre">fallback()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.basic.on_start"><code class="docutils literal notranslate"><span class="pre">on_start()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.basic.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_date_ok"><code class="docutils literal notranslate"><span class="pre">booking_date_ok()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_guests_fail"><code class="docutils literal notranslate"><span class="pre">booking_guests_fail()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_guests_ok"><code class="docutils literal notranslate"><span class="pre">booking_guests_ok()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_phone_ok"><code class="docutils literal notranslate"><span class="pre">booking_phone_ok()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_start"><code class="docutils literal notranslate"><span class="pre">booking_start()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_time_fail"><code class="docutils literal notranslate"><span class="pre">booking_time_fail()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_time_ok"><code class="docutils literal notranslate"><span class="pre">booking_time_ok()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.booking_wishes"><code class="docutils literal notranslate"><span class="pre">booking_wishes()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.booking.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
+<li><a class="reference internal" href="#handlers.feedback.feedback_comment_received"><code class="docutils literal notranslate"><span class="pre">feedback_comment_received()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.feedback.feedback_entry"><code class="docutils literal notranslate"><span class="pre">feedback_entry()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.feedback.feedback_rating_received"><code class="docutils literal notranslate"><span class="pre">feedback_rating_received()</span></code></a></li>
+<li><a class="reference internal" href="#handlers.feedback.router"><code class="docutils literal notranslate"><span class="pre">router</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">the-mix-bot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Документація проєкту The Mix Bot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-mix-bot">
+<h1>Документація проєкту The Mix Bot<a class="headerlink" href="#the-mix-bot" title="Link to this heading"></a></h1>
+<p>Тут зібрана вся технічна документація для Telegram-бота ресторану «The Mix», згенерована автоматично з docstrings у вихідному коді.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="module-main">
+<span id="id1"></span><h2>Головні компоненти<a class="headerlink" href="#module-main" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.main">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#main.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data" id="module-database">
+<dt class="sig sig-object py" id="database.CREATE_TABLES_SQL">
+<span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">CREATE_TABLES_SQL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\nCREATE</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXISTS</span> <span class="pre">feedbacks</span> <span class="pre">(\n</span>&#160;&#160;&#160; <span class="pre">id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY</span> <span class="pre">AUTOINCREMENT,\n</span>&#160;&#160;&#160; <span class="pre">user_id</span> <span class="pre">INTEGER,\n</span>&#160;&#160;&#160; <span class="pre">username</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">rating</span> <span class="pre">INTEGER,\n</span>&#160;&#160;&#160; <span class="pre">comment</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">created_at</span> <span class="pre">DATETIME</span> <span class="pre">DEFAULT</span> <span class="pre">CURRENT_TIMESTAMP\n);\n\nCREATE</span> <span class="pre">TABLE</span> <span class="pre">IF</span> <span class="pre">NOT</span> <span class="pre">EXISTS</span> <span class="pre">bookings</span> <span class="pre">(\n</span>&#160;&#160;&#160; <span class="pre">id</span> <span class="pre">INTEGER</span> <span class="pre">PRIMARY</span> <span class="pre">KEY</span> <span class="pre">AUTOINCREMENT,\n</span>&#160;&#160;&#160; <span class="pre">user_id</span> <span class="pre">INTEGER,\n</span>&#160;&#160;&#160; <span class="pre">username</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">date</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">time</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">guests</span> <span class="pre">INTEGER,\n</span>&#160;&#160;&#160; <span class="pre">wishes</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">phone</span> <span class="pre">TEXT,\n</span>&#160;&#160;&#160; <span class="pre">created_at</span> <span class="pre">DATETIME</span> <span class="pre">DEFAULT</span> <span class="pre">CURRENT_TIMESTAMP\n);\n'</span></span><a class="headerlink" href="#database.CREATE_TABLES_SQL" title="Link to this definition"></a></dt>
+<dd><p>SQL-скрипт для створення базової структури таблиць бази даних.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.add_booking">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">add_booking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.add_booking" title="Link to this definition"></a></dt>
+<dd><p>Зберігає інформацію про нове бронювання столика.</p>
+<p>Функція витягує всі необхідні параметри зі словника <cite>data</cite> (який заповнюється
+через машину станів FSM) та безпечно записує їх у таблицю <cite>bookings</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> (<em>int</em>) – Унікальний ідентифікатор користувача в Telegram.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – Юзернейм користувача.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Словник із даними бронювання. Очікує наявність ключів:
+„date“ (str): Дата візиту.
+„time“ (str): Час візиту.
+„guests“ (int, optional): Кількість гостей. За замовчуванням приводиться до 1.
+„wishes“ (str, optional): Додаткові побажання. За замовчуванням порожній рядок.
+„phone“ (str): Контактний номер телефону.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.add_feedback">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">add_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#database.add_feedback" title="Link to this definition"></a></dt>
+<dd><p>Додає новий відгук клієнта до бази даних.</p>
+<p>Асинхронно підключається до БД та виконує SQL-запит INSERT для збереження
+інформації про залишений відгук.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_id</strong> (<em>int</em>) – Унікальний ідентифікатор користувача в Telegram.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – Юзернейм користувача (може бути None, якщо у користувача його немає).</p></li>
+<li><p><strong>rating</strong> (<em>int</em>) – Оцінка візиту, вказана користувачем (зазвичай від 1 до 5).</p></li>
+<li><p><strong>comment</strong> (<em>str</em>) – Текстовий коментар або побажання.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.init_db">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">database.</span></span><span class="sig-name descname"><span class="pre">init_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#database.init_db" title="Link to this definition"></a></dt>
+<dd><p>Ініціалізує базу даних SQLite та створює необхідні таблиці.</p>
+<p>Функція підключається до бази даних за шляхом <cite>DB_PATH</cite>, який імпортується
+з конфігураційного модуля. Якщо таблиці <cite>feedbacks</cite> та <cite>bookings</cite> ще не існують,
+вони автоматично створюються за допомогою виконання SQL-скрипта <cite>CREATE_TABLES_SQL</cite>.
+Використання асинхронного контекстного менеджера гарантує безпечне закриття
+з’єднання з базою даних навіть у випадку виникнення непередбачених помилок.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Викликає<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aiosqlite.Error</strong> – Виникає у разі проблем із доступом до файлу бази даних
+    або помилок синтаксису SQL.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-config">Модуль конфігурації Telegram-бота.</p>
+<p>Цей модуль завантажує змінні оточення з файлу <cite>.env</cite> (за допомогою бібліотеки
+<cite>dotenv</cite>) та ініціалізує глобальні константи, які використовуються іншими
+компонентами проєкту. Також тут виконується базове налаштування системи
+логування для відстеження подій у консолі.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="config.ADMIN_CHAT_ID">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">ADMIN_CHAT_ID</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5618104726</span></span><a class="headerlink" href="#config.ADMIN_CHAT_ID" title="Link to this definition"></a></dt>
+<dd><p>Унікальний ідентифікатор (Chat ID) адміністратора бота.
+Використовується для надсилання системних сповіщень. За замовчуванням 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="config.BOT_TOKEN">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">BOT_TOKEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'8456190023:AAF98qLFh2VRL6D8v90NIRbLc_b-NZHZZZk'</span></span><a class="headerlink" href="#config.BOT_TOKEN" title="Link to this definition"></a></dt>
+<dd><p>Секретний токен доступу Telegram-бота, отриманий від BotFather.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="config.DB_PATH">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">DB_PATH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'themix.db'</span></span><a class="headerlink" href="#config.DB_PATH" title="Link to this definition"></a></dt>
+<dd><p>Шлях до файлу локальної бази даних SQLite.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-seed_db">Модуль для початкового наповнення (seeding) бази даних проєкту.</p>
+<p>Цей скрипт створює структуру бази даних SQLite та наповнює її набором
+фіксованих тестових даних. Використовується переважно для локальної
+розробки, налагодження та забезпечення консистентного стану перед
+запуском автоматизованих інтеграційних тестів.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="seed_db.BOOKINGS_DATA">
+<span class="sig-prename descclassname"><span class="pre">seed_db.</span></span><span class="sig-name descname"><span class="pre">BOOKINGS_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[(1,</span> <span class="pre">111111,</span> <span class="pre">'25-12-2025',</span> <span class="pre">'18:00',</span> <span class="pre">2,</span> <span class="pre">'+380501234567',</span> <span class="pre">'Біля</span> <span class="pre">вікна'),</span> <span class="pre">(2,</span> <span class="pre">222222,</span> <span class="pre">'01-01-2026',</span> <span class="pre">'21:00',</span> <span class="pre">20,</span> <span class="pre">'+380999999999',</span> <span class="pre">'Ювілей'),</span> <span class="pre">(3,</span> <span class="pre">333333,</span> <span class="pre">'08-03-2026',</span> <span class="pre">'11:00',</span> <span class="pre">1,</span> <span class="pre">'+380630000000',</span> <span class="pre">'-'),</span> <span class="pre">(4,</span> <span class="pre">444444,</span> <span class="pre">'14-02-2026',</span> <span class="pre">'19:30',</span> <span class="pre">2,</span> <span class="pre">'+380971112233',</span> <span class="pre">'Love</span> <span class="pre">is</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">air!')]</span></span><a class="headerlink" href="#seed_db.BOOKINGS_DATA" title="Link to this definition"></a></dt>
+<dd><p>Список кортежів із фіксованими тестовими даними для таблиці бронювань.
+Містить id, user_id, дату, час, кількість гостей, телефон та побажання.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="seed_db.DB_NAME">
+<span class="sig-prename descclassname"><span class="pre">seed_db.</span></span><span class="sig-name descname"><span class="pre">DB_NAME</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'themix.db'</span></span><a class="headerlink" href="#seed_db.DB_NAME" title="Link to this definition"></a></dt>
+<dd><p>Ім’я файлу локальної бази даних SQLite.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="seed_db.FEEDBACKS_DATA">
+<span class="sig-prename descclassname"><span class="pre">seed_db.</span></span><span class="sig-name descname"><span class="pre">FEEDBACKS_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[(1,</span> <span class="pre">111111,</span> <span class="pre">5,</span> <span class="pre">'Все</span> <span class="pre">супер,</span> <span class="pre">кухня</span> <span class="pre">смачна!'),</span> <span class="pre">(2,</span> <span class="pre">222222,</span> <span class="pre">1,</span> <span class="pre">'Жахливо.</span> <span class="pre">Чекали</span> <span class="pre">40</span> <span class="pre">хвилин.'),</span> <span class="pre">(3,</span> <span class="pre">333333,</span> <span class="pre">3,</span> <span class="pre">'Нормально.'),</span> <span class="pre">(4,</span> <span class="pre">444444,</span> <span class="pre">5,</span> <span class="pre">'Детальний</span> <span class="pre">відгук...')]</span></span><a class="headerlink" href="#seed_db.FEEDBACKS_DATA" title="Link to this definition"></a></dt>
+<dd><p>Список кортежів із фіксованими тестовими даними для таблиці відгуків.
+Містить id, user_id, рейтинг (1-5) та текстовий коментар.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seed_db.seed_database">
+<span class="sig-prename descclassname"><span class="pre">seed_db.</span></span><span class="sig-name descname"><span class="pre">seed_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#seed_db.seed_database" title="Link to this definition"></a></dt>
+<dd><p>Перестворює базу даних та заповнює її початковими тестовими даними.</p>
+<p>Алгоритм роботи функції:
+1. Перевіряє наявність файлу бази даних (визначеного у <cite>DB_NAME</cite>) і видаляє</p>
+<blockquote>
+<div><p>його, якщо він існує, щоб гарантувати повністю чисте середовище.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Встановлює з’єднання з SQLite.</p></li>
+<li><p>Створює таблиці <cite>bookings</cite> та <cite>feedbacks</cite> із необхідною схемою бази даних.</p></li>
+<li><p>Вставляє дані з глобальних змінних <cite>BOOKINGS_DATA</cite> та <cite>FEEDBACKS_DATA</cite>
+за допомогою пакетного запиту <cite>executemany()</cite>. Жорстке задання ID записів
+гарантує передбачуваність результатів для перевірок у pytest.</p></li>
+<li><p>Зберігає зміни (commit) та безпечно закриває з’єднання.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Повертає<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-utils">
+<span id="id2"></span><h2>Утиліти та Інтерфейси<a class="headerlink" href="#module-utils" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.Texts">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">Texts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">welcome</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Привіт!</span> <span class="pre">👋</span> <span class="pre">Вас</span> <span class="pre">вітає</span> <span class="pre">ресторан</span> <span class="pre">&lt;b&gt;The</span> <span class="pre">Mix&lt;/b&gt;.\nОберіть</span> <span class="pre">потрібний</span> <span class="pre">розділ</span> <span class="pre">нижче.</span> <span class="pre">Якщо</span> <span class="pre">меню</span> <span class="pre">зникло</span> <span class="pre">—</span> <span class="pre">надішліть</span> <span class="pre">/start.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contacts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'📍</span> <span class="pre">&lt;b&gt;Адреса&lt;/b&gt;:</span> <span class="pre">пр.</span> <span class="pre">Тараса</span> <span class="pre">Шевченка</span> <span class="pre">25,</span> <span class="pre">м.</span> <span class="pre">Суми\n🕒</span> <span class="pre">&lt;b&gt;Години&lt;/b&gt;:</span> <span class="pre">11:00–21:00\n📞</span> <span class="pre">&lt;b&gt;Телефон&lt;/b&gt;:</span> <span class="pre">+380953489333\n🌐</span> <span class="pre">&lt;b&gt;Соцмережі&lt;/b&gt;:</span> <span class="pre">Instagram:</span> <span class="pre">&#64;themixsumy\n&lt;b&gt;Завжди</span> <span class="pre">чекаємо</span> <span class="pre">на</span> <span class="pre">Вас</span> <span class="pre">у</span> <span class="pre">TheMix&lt;/b&gt;</span> <span class="pre">🫶'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.Texts" title="Link to this definition"></a></dt>
+<dd><p>Контейнер статичних текстових шаблонів для відповідей Telegram-бота.</p>
+<p>Використання dataclass дозволяє централізовано зберігати та управляти
+багаторядковими текстовими повідомленнями, які містять HTML-розмітку.
+Такий підхід ізолює тексти від бізнес-логіки обробників (handlers)
+та полегшує їхню подальшу підтримку.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.Texts.welcome">
+<span class="sig-name descname"><span class="pre">welcome</span></span><a class="headerlink" href="#utils.Texts.welcome" title="Link to this definition"></a></dt>
+<dd><p>Привітальне повідомлення, яке містить інструкцію
+щодо користування головним навігаційним меню бота.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="utils.Texts.contacts">
+<span class="sig-name descname"><span class="pre">contacts</span></span><a class="headerlink" href="#utils.Texts.contacts" title="Link to this definition"></a></dt>
+<dd><p>Контактна інформація ресторану, що включає адресу,
+графік роботи, актуальний номер телефону та посилання на соцмережі.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">contacts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'📍</span> <span class="pre">&lt;b&gt;Адреса&lt;/b&gt;:</span> <span class="pre">пр.</span> <span class="pre">Тараса</span> <span class="pre">Шевченка</span> <span class="pre">25,</span> <span class="pre">м.</span> <span class="pre">Суми\n🕒</span> <span class="pre">&lt;b&gt;Години&lt;/b&gt;:</span> <span class="pre">11:00–21:00\n📞</span> <span class="pre">&lt;b&gt;Телефон&lt;/b&gt;:</span> <span class="pre">+380953489333\n🌐</span> <span class="pre">&lt;b&gt;Соцмережі&lt;/b&gt;:</span> <span class="pre">Instagram:</span> <span class="pre">&#64;themixsumy\n&lt;b&gt;Завжди</span> <span class="pre">чекаємо</span> <span class="pre">на</span> <span class="pre">Вас</span> <span class="pre">у</span> <span class="pre">TheMix&lt;/b&gt;</span> <span class="pre">🫶'</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">welcome</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Привіт!</span> <span class="pre">👋</span> <span class="pre">Вас</span> <span class="pre">вітає</span> <span class="pre">ресторан</span> <span class="pre">&lt;b&gt;The</span> <span class="pre">Mix&lt;/b&gt;.\nОберіть</span> <span class="pre">потрібний</span> <span class="pre">розділ</span> <span class="pre">нижче.</span> <span class="pre">Якщо</span> <span class="pre">меню</span> <span class="pre">зникло</span> <span class="pre">—</span> <span class="pre">надішліть</span> <span class="pre">/start.'</span></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.notify_admin">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">notify_admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Bot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.notify_admin" title="Link to this definition"></a></dt>
+<dd><p>Надсилає текстове сповіщення визначеному адміністратору бота.</p>
+<p>Функція перевіряє наявність налаштованого ідентифікатора адміністратора
+<cite>ADMIN_CHAT_ID</cite>. Якщо ідентифікатор дійсний (не дорівнює нулю), відбувається
+спроба надсилання повідомлення через екземпляр бота. У разі виникнення винятку
+під час мережевого запиту (наприклад, якщо адміністратор заблокував бота
+або виникли проблеми з мережею), помилка перехоплюється та логується
+зі статусом WARNING. Це запобігає аварійній зупинці основного процесу бота.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bot</strong> (<em>Bot</em>) – Поточний екземпляр бота (aiogram.Bot), через який виконується запит.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – Текст повідомлення, яке необхідно надіслати адміністратору.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Викликає<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Усі винятки перехоплюються локально та записуються в системний лог,
+    отже функція ніколи не викидає винятків на вищий рівень абстракції.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class" id="module-states">
+<dt class="sig sig-object py" id="states.BookingSG">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">states.</span></span><span class="sig-name descname"><span class="pre">BookingSG</span></span><a class="headerlink" href="#states.BookingSG" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StatesGroup</span></code></p>
+<p>Контейнер станів машини кінцевих автоматів (FSM) для процесу бронювання.</p>
+<p>Цей клас наслідує <cite>StatesGroup</cite> з фреймворку aiogram і визначає лінійний
+маршрут збору інформації від клієнта ресторану. Кожен атрибут класу є
+екземпляром <cite>State</cite> і представляє окремий ізольований крок у діалозі.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.BookingSG.waiting_date">
+<span class="sig-name descname"><span class="pre">waiting_date</span></span><a class="headerlink" href="#states.BookingSG.waiting_date" title="Link to this definition"></a></dt>
+<dd><p>Стан очікування дати бронювання у форматі ДД-ММ-РРРР.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.BookingSG.waiting_time">
+<span class="sig-name descname"><span class="pre">waiting_time</span></span><a class="headerlink" href="#states.BookingSG.waiting_time" title="Link to this definition"></a></dt>
+<dd><p>Стан очікування часу візиту у форматі ГГ:ХХ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.BookingSG.waiting_guests">
+<span class="sig-name descname"><span class="pre">waiting_guests</span></span><a class="headerlink" href="#states.BookingSG.waiting_guests" title="Link to this definition"></a></dt>
+<dd><p>Стан очікування введення кількості гостей (ціле число).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.BookingSG.waiting_wishes">
+<span class="sig-name descname"><span class="pre">waiting_wishes</span></span><a class="headerlink" href="#states.BookingSG.waiting_wishes" title="Link to this definition"></a></dt>
+<dd><p>Стан для збору додаткових побажань користувача.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.BookingSG.waiting_phone">
+<span class="sig-name descname"><span class="pre">waiting_phone</span></span><a class="headerlink" href="#states.BookingSG.waiting_phone" title="Link to this definition"></a></dt>
+<dd><p>Фінальний стан очікування валідного номеру телефону.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">waiting_date</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'BookingSG:waiting_date'&gt;</span></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">waiting_guests</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'BookingSG:waiting_guests'&gt;</span></span><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">waiting_phone</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'BookingSG:waiting_phone'&gt;</span></span><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">waiting_time</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'BookingSG:waiting_time'&gt;</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">waiting_wishes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'BookingSG:waiting_wishes'&gt;</span></span><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="states.FeedbackSG">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">states.</span></span><span class="sig-name descname"><span class="pre">FeedbackSG</span></span><a class="headerlink" href="#states.FeedbackSG" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StatesGroup</span></code></p>
+<p>Контейнер станів машини кінцевих автоматів (FSM) для процесу збору відгуків.</p>
+<p>Цей клас наслідує <cite>StatesGroup</cite> і визначає кроки, які проходить користувач
+під час залишення відгуку про ресторан. Кожен атрибут є екземпляром <cite>State</cite>,
+що представляє окремий етап очікування вводу даних від користувача.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.FeedbackSG.waiting_rating">
+<span class="sig-name descname"><span class="pre">waiting_rating</span></span><a class="headerlink" href="#states.FeedbackSG.waiting_rating" title="Link to this definition"></a></dt>
+<dd><p>Стан очікування числової оцінки візиту (від 1 до 5).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="states.FeedbackSG.waiting_comment">
+<span class="sig-name descname"><span class="pre">waiting_comment</span></span><a class="headerlink" href="#states.FeedbackSG.waiting_comment" title="Link to this definition"></a></dt>
+<dd><p>Стан очікування розгорнутого текстового коментаря.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>State</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">waiting_comment</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'FeedbackSG:waiting_comment'&gt;</span></span><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">waiting_rating</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;State</span> <span class="pre">'FeedbackSG:waiting_rating'&gt;</span></span><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function" id="module-keyboards">
+<dt class="sig sig-object py" id="keyboards.main_kb">
+<span class="sig-prename descclassname"><span class="pre">keyboards.</span></span><span class="sig-name descname"><span class="pre">main_kb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ReplyKeyboardMarkup</span></span></span><a class="headerlink" href="#keyboards.main_kb" title="Link to this definition"></a></dt>
+<dd><p>Генерує головне навігаційне меню бота.</p>
+<p>Створює та повертає об’єкт <cite>ReplyKeyboardMarkup</cite>, який містить три основні
+навігаційні кнопки, розташовані у два ряди. Клавіатура автоматично масштабується
+під розмір екрану пристрою (<cite>resize_keyboard=True</cite>) та містить підказку
+у полі вводу (<cite>input_field_placeholder</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Повертає<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Сконфігурований об’єкт клавіатури для відправки користувачу.</p>
+</dd>
+<dt class="field-even">Тип повернення<span class="colon">:</span></dt>
+<dd class="field-even"><p>ReplyKeyboardMarkup</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="keyboards.yesno_kb">
+<span class="sig-prename descclassname"><span class="pre">keyboards.</span></span><span class="sig-name descname"><span class="pre">yesno_kb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb_yes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cb_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">InlineKeyboardMarkup</span></span></span><a class="headerlink" href="#keyboards.yesno_kb" title="Link to this definition"></a></dt>
+<dd><p>Генерує інлайн-клавіатуру для простого бінарного вибору («Так» або «Ні»).</p>
+<p>Створює та повертає об’єкт <cite>InlineKeyboardMarkup</cite>, що містить один ряд
+із двома кнопками. Кожна кнопка містить відповідний текст та повертає
+передані callback-дані (callback_data) при натисканні користувачем.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cb_yes</strong> (<em>str</em>) – Дані, що повертаються системі при натисканні кнопки «Так».</p></li>
+<li><p><strong>cb_no</strong> (<em>str</em>) – Дані, що повертаються системі при натисканні кнопки «Ні».</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>Об’єкт інлайн-клавіатури з двома кнопками.</p>
+</dd>
+<dt class="field-odd">Тип повернення<span class="colon">:</span></dt>
+<dd class="field-odd"><p>InlineKeyboardMarkup</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-handlers.basic">
+<span id="handlers"></span><h2>Обробники подій (Handlers)<a class="headerlink" href="#module-handlers.basic" title="Link to this heading"></a></h2>
+<p>Модуль обробки базових команд та загальних текстових повідомлень.</p>
+<p>Цей модуль містить роутер для обробки команди /start, запиту контактної
+інформації та резервний обробник (fallback) для будь-якого іншого тексту,
+який не підпадає під визначені критерії в інших роутерах.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.basic.contacts">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">contacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.basic.contacts" title="Link to this definition"></a></dt>
+<dd><p>Відправляє користувачу контактну інформацію ресторану.</p>
+<p>Реагує на натискання кнопки «📍 Наші контакти» з головного меню.
+Вимикає попередній перегляд веб-сторінок для посилань у повідомленні
+(<cite>disable_web_page_preview=True</cite>), щоб повідомлення виглядало охайно
+і не перевантажувало чат зайвими прев’ю Instagram чи Google Maps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення від користувача.</p>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.basic.fallback">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">fallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.basic.fallback" title="Link to this definition"></a></dt>
+<dd><p>Резервний обробник (fallback) для нерозпізнаних текстових повідомлень.</p>
+<p>Цей обробник перехоплює будь-який текст, який не був оброблений попередніми
+фільтрами або іншими роутерами (наприклад, випадковий текст від користувача
+поза процесом бронювання чи залишення відгуку). Він нагадує користувачу про
+необхідність використання кнопок меню.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з нерозпізнаним текстом.</p>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.basic.on_start">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">on_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.basic.on_start" title="Link to this definition"></a></dt>
+<dd><p>Обробляє базову команду /start.</p>
+<p>Функція скидає будь-який поточний стан машини станів (FSM), щоб гарантувати
+чистий початок сесії. Після цього надсилає користувачу привітальне повідомлення
+та відображає головне навігаційне меню.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення від користувача, наданий aiogram.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Контекст кінцевого автомата для керування станами.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="handlers.basic.router">
+<span class="sig-prename descclassname"><span class="pre">handlers.basic.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd9bdfdd0'&gt;</span></span><a class="headerlink" href="#handlers.basic.router" title="Link to this definition"></a></dt>
+<dd><p>Екземпляр роутера для маршрутизації базових подій бота.</p>
+</dd></dl>
+
+<p id="module-handlers.booking">Модуль обробки процесу бронювання столика.</p>
+<p>Цей модуль містить роутер та обробники повідомлень (handlers) для машини
+станів (FSM). Він відповідає за покроковий збір інформації від клієнта
+(дата, час, кількість гостей, побажання, номер телефону), валідацію введених
+даних, збереження їх у базу даних та сповіщення адміністратора.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_date_ok">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_date_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_date_ok" title="Link to this definition"></a></dt>
+<dd><p>Обробляє та валідує введену дату бронювання.</p>
+<p>Перевіряє, чи відповідає дата формату, і чи не є вона в минулому часі.
+Якщо дата коректна, вона зберігається в пам’ять FSM, а система переходить
+до запиту часу. Якщо дата введена неправильно, користувач отримує
+повідомлення про помилку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення, що містить введену дату.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_guests_fail">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_guests_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_guests_fail" title="Link to this definition"></a></dt>
+<dd><p>Обробник некоректного вводу кількості гостей.</p>
+<p>Спрацьовує, якщо користувач вводить дані, які не є числом, під час
+стану очікування кількості гостей. Пропонує правильний формат.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з помилковим вводом.</p>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_guests_ok">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_guests_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_guests_ok" title="Link to this definition"></a></dt>
+<dd><p>Обробляє введену кількість гостей.</p>
+<p>Зберігає значення (попередньо перетворивши його на ціле число)
+у контекст FSM і переходить до запиту додаткових побажань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з вказаною кількістю гостей.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_phone_ok">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_phone_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_phone_ok" title="Link to this definition"></a></dt>
+<dd><p>Обробляє номер телефону та фіналізує процес бронювання.</p>
+<p>Витягує всі зібрані дані з пам’яті машини станів, формує запис та
+зберігає його в базу даних SQLite. Після цього відправляє клієнту
+підтвердження, сповіщає адміністратора та скидає стан FSM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з контактним номером.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_start">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_start" title="Link to this definition"></a></dt>
+<dd><p>Ініціює процес бронювання столика та переводить користувача у стан очікування дати.</p>
+<p>Цей асинхронний обробник реагує на конкретне текстове повідомлення від користувача
+(»🍽️ Забронювати столик»). Функція спочатку очищує будь-який попередній стан
+машини станів (FSM), щоб уникнути конфліктів даних, після чого встановлює
+новий стан <cite>BookingSG.waiting_date</cite> та надсилає користувачу інструкцію.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення від користувача, що містить метадані чату,
+наданий фреймворком aiogram.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Контекст кінцевого автомата для збереження поточного
+стану сесії користувача.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_time_fail">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_time_fail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_time_fail" title="Link to this definition"></a></dt>
+<dd><p>Обробник некоректного вводу часу бронювання.</p>
+<p>Спрацьовує, якщо користувач вводить час, що не відповідає шаблону ГГ:ХХ.
+Пропонує правильний формат.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з помилковим вводом.</p>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_time_ok">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_time_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_time_ok" title="Link to this definition"></a></dt>
+<dd><p>Обробляє та валідує введений час бронювання.</p>
+<p>Перевіряє, чи знаходиться вказаний час у межах робочих годин ресторану
+(між 11:00 та 21:00). За умови успішної перевірки зберігає час і
+запитує кількість гостей.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення, що містить введений час.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.booking.booking_wishes">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">booking_wishes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.booking.booking_wishes" title="Link to this definition"></a></dt>
+<dd><p>Обробляє текстові побажання користувача до бронювання.</p>
+<p>Зберігає текст побажань у стан FSM та переводить систему у фінальний стан
+очікування контактного номеру телефону.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення з текстом побажань.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="handlers.booking.router">
+<span class="sig-prename descclassname"><span class="pre">handlers.booking.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd9c0aed0'&gt;</span></span><a class="headerlink" href="#handlers.booking.router" title="Link to this definition"></a></dt>
+<dd><p>Екземпляр роутера для маршрутизації подій процесу бронювання.</p>
+</dd></dl>
+
+<p id="module-handlers.feedback">Модуль обробки процесу залишення відгуку клієнтом.</p>
+<p>Цей модуль містить роутер та обробники повідомлень (handlers) для
+машини станів (FSM), які відповідають за збір оцінки та текстового коментаря
+від користувача, збереження їх у базу даних та сповіщення адміністратора.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.feedback.feedback_comment_received">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">feedback_comment_received</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.feedback.feedback_comment_received" title="Link to this definition"></a></dt>
+<dd><p>Обробляє текстовий коментар користувача та завершує процес збору відгуку.</p>
+<p>Отримує збережену раніше оцінку з контексту FSM та поточний коментар
+із повідомлення. Зберігає зібрані дані в базу даних SQLite за допомогою
+функції <cite>add_feedback</cite>, надсилає користувачу повідомлення з подякою та
+повертає головне меню. Також формує та надсилає сповіщення адміністратору
+про отримання нового відгуку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення, що містить текст коментаря.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.feedback.feedback_entry">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">feedback_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.feedback.feedback_entry" title="Link to this definition"></a></dt>
+<dd><p>Ініціює процес залишення відгуку та переводить систему у стан очікування оцінки.</p>
+<p>Обробляє натискання кнопки «📝 Залишити відгук» з головного меню.
+Функція очищує попередній стан машини станів (щоб уникнути конфліктів)
+та запитує у користувача числову оцінку візиту.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення від користувача.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Контекст машини станів aiogram.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="handlers.feedback.feedback_rating_received">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">feedback_rating_received</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FSMContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#handlers.feedback.feedback_rating_received" title="Link to this definition"></a></dt>
+<dd><p>Обробляє введену користувачем оцінку та перевіряє її валідність.</p>
+<p>Функція намагається перетворити текст повідомлення на ціле число та перевіряє,
+чи знаходиться воно в межах від 1 до 5. Якщо оцінка валідна, вона зберігається
+в тимчасовій пам’яті FSM, а користувач переводиться у стан очікування коментаря.
+У разі помилки вводу (не число або число поза діапазоном), бот просить
+ввести дані повторно.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметри<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Message</em>) – Об’єкт повідомлення, що містить введену оцінку.</p></li>
+<li><p><strong>state</strong> (<em>FSMContext</em>) – Поточний контекст машини станів.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Повертає<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="handlers.feedback.router">
+<span class="sig-prename descclassname"><span class="pre">handlers.feedback.</span></span><span class="sig-name descname"><span class="pre">router</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Router</span> <span class="pre">'0x24cd8576480'&gt;</span></span><a class="headerlink" href="#handlers.feedback.router" title="Link to this definition"></a></dt>
+<dd><p>Екземпляр роутера для маршрутизації подій, пов’язаних із відгуками.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, liaamirt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
