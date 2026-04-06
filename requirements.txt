@@ -11,3 +11,4 @@ mypy
 make
 sphinx
 sphinx-rtd-theme
+pydocstyle
