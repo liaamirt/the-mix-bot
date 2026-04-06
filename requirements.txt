@@ -12,3 +12,4 @@ make
 sphinx
 sphinx-rtd-theme
 pydocstyle
+pytest-testdox
